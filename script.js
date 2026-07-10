@@ -1,43 +1,59 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
+// --- Sticky Header Logic ---
+const header = document.getElementById('main-header');
 
-    // Toggle Mobile Navigation Menu
-    mobileMenu.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// --- Smooth Scrolling for Navigation Links ---
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
         
-        // Toggle menu icon animation/state
-        const icon = mobileMenu.querySelector('i');
-        if(navLinks.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-xmark');
-        } else {
-            icon.classList.remove('fa-xmark');
-            icon.classList.add('fa-bars');
-        }
-    });
-
-    // Close mobile menu when link is clicked
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            const icon = mobileMenu.querySelector('i');
-            icon.classList.remove('fa-xmark');
-            icon.classList.add('fa-bars');
-        });
-    });
-
-    // Event Listener for handling download action safely
-    const downloadBtn = document.getElementById('downloadBtn');
-    downloadBtn.addEventListener('click', (e) => {
-        const fileTarget = downloadBtn.getAttribute('href');
-        
-        if (fileTarget === '#') {
-            e.preventDefault();
-            alert('Please update the href link inside index.html to your local file path.');
-        } else {
-            // Logs to the browser console when the download successfully triggers
-            console.log('Download initiated for: ' + fileTarget);
+        if(targetElement) {
+            // Offset ensures the floating header doesn't cover section titles
+            const headerOffset = 120;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
         }
     });
 });
+
+// --- Scroll Reveal Animations ---
+const reveals = document.querySelectorAll('.reveal');
+
+reveals.forEach(element => {
+    element.style.opacity = "0";
+    element.style.transform = "translateY(30px)";
+    element.style.transition = "all 0.6s ease-out";
+});
+
+const revealOnScroll = () => {
+    const windowHeight = window.innerHeight;
+    const elementVisible = 100;
+
+    reveals.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - elementVisible) {
+            element.style.opacity = "1";
+            element.style.transform = "translateY(0)";
+        }
+    });
+};
+
+// Listen for scroll events
+window.addEventListener('scroll', revealOnScroll);
+// Trigger once on load in case elements are already in view
+window.addEventListener('load', revealOnScroll);
