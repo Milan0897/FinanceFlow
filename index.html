@@ -1,962 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finance Flow Premium</title>
-    <meta name="description" content="Finance Flow is a premium billing and invoicing software landing page.">
+    <title>Finance Flow | Professional Offline Billing Software</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <style>
-        :root {
-            --bg: #06111f;
-            --bg-soft: rgba(255, 255, 255, 0.06);
-            --bg-strong: rgba(255, 255, 255, 0.12);
-            --border: rgba(161, 181, 255, 0.18);
-            --text: #f7fbff;
-            --muted: #b9c8de;
-            --teal: #20d8d2;
-            --blue: #5b8cff;
-            --violet: #8b5cf6;
-            --gold: #f6c85f;
-            --shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Inter", sans-serif;
-            color: var(--text);
-            background:
-                radial-gradient(circle at 10% 10%, rgba(34, 216, 210, 0.22), transparent 28%),
-                radial-gradient(circle at 88% 18%, rgba(91, 140, 255, 0.22), transparent 24%),
-                radial-gradient(circle at 45% 72%, rgba(139, 92, 246, 0.12), transparent 28%),
-                linear-gradient(180deg, #06111f 0%, #091625 45%, #0b172a 100%);
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 42px 42px;
-            mask-image: radial-gradient(circle at center, black, transparent 80%);
-            opacity: 0.35;
-        }
-
-        img,
-        video {
-            max-width: 100%;
-            display: block;
-        }
-
-        a {
-            color: inherit;
-        }
-
-        .container {
-            width: min(92%, 1200px);
-            margin: 0 auto;
-        }
-
-        .section {
-            padding: 96px 0;
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 16px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.06);
-            color: #d9f7ff;
-            font-size: 0.92rem;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-        }
-
-        .glass {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(22px) saturate(180%);
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 22px;
-            border-radius: 999px;
-            text-decoration: none;
-            font-weight: 700;
-            border: 1px solid transparent;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--teal), var(--blue) 55%, var(--violet));
-            box-shadow: 0 18px 34px rgba(91, 140, 255, 0.28);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: var(--border);
-        }
-
-        header {
-            position: fixed;
-            inset: 14px 0 auto;
-            z-index: 50;
-        }
-
-        .nav-shell {
-            border-radius: 999px;
-            padding: 12px 16px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-shell::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(34, 216, 210, 0.08), rgba(139, 92, 246, 0.1));
-            pointer-events: none;
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            min-width: 0;
-        }
-
-        .brand-mark {
-            width: 58px;
-            height: 58px;
-            border-radius: 18px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            flex: 0 0 auto;
-        }
-
-        .brand-mark img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .brand-text strong {
-            display: block;
-            font-family: "Space Grotesk", sans-serif;
-            font-size: 1.14rem;
-            letter-spacing: 0.03em;
-        }
-
-        .brand-text span {
-            display: block;
-            color: var(--muted);
-            font-size: 0.84rem;
-            margin-top: 2px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--muted);
-            font-weight: 700;
-            letter-spacing: 0.01em;
-            transition: color 0.2s ease, opacity 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text);
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .menu-toggle {
-            display: none;
-            width: 46px;
-            height: 46px;
-            border-radius: 14px;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.06);
-            color: var(--text);
-            cursor: pointer;
-        }
-
-        .hero {
-            padding-top: 142px;
-            padding-bottom: 84px;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: 42px;
-            align-items: center;
-        }
-
-        .hero h1,
-        .section-title,
-        .footer-brand {
-            font-family: "Space Grotesk", sans-serif;
-            letter-spacing: -0.03em;
-        }
-
-        .hero h1 {
-            margin: 18px 0 18px;
-            font-size: clamp(3rem, 6vw, 5.4rem);
-            line-height: 0.98;
-        }
-
-        .hero h1 .accent {
-            background: linear-gradient(90deg, #66f0ef, #8fb4ff 48%, #f6c85f 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .lead {
-            color: var(--muted);
-            font-size: 1.08rem;
-            line-height: 1.8;
-            max-width: 640px;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-top: 28px;
-        }
-
-        .hero-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 28px;
-        }
-
-        .pill {
-            padding: 10px 14px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--border);
-            color: #d6e1f7;
-            font-size: 0.92rem;
-        }
-
-        .preview-panel {
-            position: relative;
-            padding: 18px;
-            border-radius: 30px;
-        }
-
-        .preview-frame {
-            border-radius: 26px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .preview-frame img {
-            width: 100%;
-            aspect-ratio: 4 / 3;
-            object-fit: cover;
-        }
-
-        .float-card {
-            position: absolute;
-            padding: 14px 16px;
-            border-radius: 18px;
-            background: rgba(8, 16, 30, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            backdrop-filter: blur(18px);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
-        }
-
-        .float-top {
-            left: -8px;
-            top: 8%;
-        }
-
-        .float-bottom {
-            right: -8px;
-            bottom: 8%;
-        }
-
-        .float-card strong {
-            display: block;
-            font-size: 0.95rem;
-        }
-
-        .float-card span {
-            color: var(--muted);
-            font-size: 0.8rem;
-        }
-
-        .section-head {
-            max-width: 760px;
-            margin: 0 auto 38px;
-            text-align: center;
-        }
-
-        .section-title {
-            margin: 16px 0 14px;
-            font-size: clamp(2rem, 4vw, 3.3rem);
-            line-height: 1.05;
-        }
-
-        .section-copy {
-            color: var(--muted);
-            line-height: 1.8;
-            font-size: 1.03rem;
-        }
-
-        .feature-grid,
-        .stats-grid,
-        .gallery-grid {
-            display: grid;
-            gap: 22px;
-        }
-
-        .feature-grid {
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        }
-
-        .feature-card,
-        .stat-card,
-        .info-card,
-        .download-card {
-            border-radius: 24px;
-            padding: 24px;
-        }
-
-        .feature-card h3,
-        .info-card h3 {
-            font-size: 1.08rem;
-            margin: 18px 0 10px;
-        }
-
-        .feature-card p,
-        .info-card p,
-        .stat-card p,
-        .download-card p {
-            color: var(--muted);
-            line-height: 1.7;
-        }
-
-        .feature-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 16px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(34, 196, 201, 0.2), rgba(79, 139, 255, 0.2));
-            color: #dffcff;
-            font-size: 1.2rem;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 22px;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 22px;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 24px 54px rgba(0, 0, 0, 0.3);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            aspect-ratio: 4 / 3;
-            object-fit: cover;
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            inset: auto 0 0 0;
-            padding: 18px;
-            background: linear-gradient(to top, rgba(5, 11, 24, 0.9), rgba(5, 11, 24, 0));
-        }
-
-        .gallery-overlay strong {
-            font-size: 1rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 22px;
-        }
-
-        .stat-card {
-            text-align: center;
-        }
-
-        .stat-card h3 {
-            font-size: clamp(2rem, 4vw, 3.8rem);
-            font-family: "Space Grotesk", sans-serif;
-            margin-bottom: 8px;
-        }
-
-        .preview-section video {
-            width: 100%;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: var(--shadow);
-            background: #000;
-        }
-
-        .download-card {
-            padding: clamp(24px, 5vw, 54px);
-            text-align: center;
-            border-radius: 30px;
-        }
-
-        .download-actions {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 14px;
-            margin: 28px 0;
-        }
-
-        .steps {
-            max-width: 720px;
-            margin: 30px auto 0;
-            text-align: left;
-            padding: 24px;
-            border-radius: 24px;
-        }
-
-        .steps ol {
-            padding-left: 20px;
-            margin-top: 14px;
-            color: var(--muted);
-            line-height: 1.9;
-        }
-
-        .footer {
-            padding: 44px 0 28px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.3fr 0.7fr 0.7fr;
-            gap: 28px;
-        }
-
-        .footer-brand {
-            font-size: 1.6rem;
-            margin-bottom: 14px;
-        }
-
-        .footer p,
-        .footer a {
-            color: var(--muted);
-            text-decoration: none;
-        }
-
-        .footer h4 {
-            margin-bottom: 14px;
-        }
-
-        .socials {
-            display: flex;
-            gap: 14px;
-            font-size: 1.2rem;
-            margin-top: 16px;
-        }
-
-        .modal {
-            position: fixed;
-            inset: 0;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            background: rgba(2, 6, 12, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            padding: 20px;
-        }
-
-        .modal.open {
-            display: flex;
-        }
-
-        .modal img {
-            width: min(1100px, 96vw);
-            max-height: 86vh;
-            object-fit: contain;
-            border-radius: 18px;
-            box-shadow: var(--shadow);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 18px;
-            right: 22px;
-            width: 44px;
-            height: 44px;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--text);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 980px) {
-            header {
-                inset: 10px 0 auto;
-            }
-
-            .nav-links,
-            .nav .btn-primary.desktop-only {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: inline-flex;
-            }
-
-            .nav {
-                flex-wrap: wrap;
-            }
-
-            .nav-links.mobile-open {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                align-items: flex-start;
-                gap: 16px;
-                padding: 18px 6px 8px;
-            }
-
-            .nav-shell {
-                border-radius: 26px;
-            }
-
-            .hero-grid,
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding-top: 128px;
-            }
-
-            .preview-panel {
-                max-width: 720px;
-                margin: 0 auto;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .container {
-                width: min(94%, 1200px);
-            }
-
-            .section {
-                padding: 76px 0;
-            }
-
-            .hero h1 {
-                font-size: clamp(2.4rem, 12vw, 4rem);
-            }
-
-            .brand-mark {
-                width: 48px;
-                height: 48px;
-            }
-
-            .nav-shell {
-                border-radius: 22px;
-                padding: 10px 12px;
-            }
-
-            .float-card {
-                display: none;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <header>
-        <div class="container glass nav-shell">
-            <nav class="nav" aria-label="Primary">
-                <a class="brand" href="#home" aria-label="Finance Flow home">
-                    <span class="brand-mark">
-                        <img src="Home.jpeg" alt="Finance Flow logo">
-                    </span>
-                    <span class="brand-text">
-                        <strong>Finance Flow</strong>
-                        <span>Billing & invoicing software</span>
-                    </span>
-                </a>
 
-                <ul class="nav-links" id="navLinks">
+    <header id="main-header">
+        <div class="nav-container">
+            <div class="logo">FINANCE <span>FLOW</span></div>
+            <nav class="nav-menu">
+                <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#download">Download</a></li>
+                    <li><a href="#capabilities">Overview</a></li>
+                    <li><a href="#features">Interface</a></li>
                 </ul>
-
-                <div class="nav-actions">
-                    <a class="btn btn-primary desktop-only" href="#download">Download</a>
-                    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation">
-                        <i class="fa-solid fa-bars"></i>
-                    </button>
-                </div>
+                <a href="#download" class="btn-nav">Download Now</a>
             </nav>
         </div>
     </header>
 
     <main>
-        <section class="hero" id="home">
-            <div class="container hero-grid">
-                <div>
-                    <span class="eyebrow"><i class="fa-solid fa-sparkles"></i> Premium desktop accounting
-                        software</span>
-                    <h1>Run your <span class="accent">business smarter</span> with one clean dashboard.</h1>
-                    <p class="lead">Finance Flow brings billing, inventory, GST, reporting, customer tracking, and stock
-                        management together in a polished desktop experience designed for speed and clarity.</p>
-
-                    <div class="hero-actions">
-                        <a class="btn btn-primary" href="#download"><i class="fa-solid fa-download"></i> Download
-                            Now</a>
-                        <a class="btn btn-secondary" href="#gallery"><i class="fa-solid fa-images"></i> View
-                            Screenshots</a>
-                    </div>
-
-                    <div class="hero-meta">
-                        <span class="pill">Fast workflow</span>
-                        <span class="pill">Local data</span>
-                        <span class="pill">Professional invoices</span>
-                    </div>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <span class="badge">Version 1.0 Available</span>
+                <h1>Smart, Secure, & Offline Billing</h1>
+                <p>Take control of your business with Finance Flow. Manage inventory, process sales, calculate GST, and track customer dues securely without needing an internet connection.</p>
+                <div class="hero-actions">
+                    <a href="FinanceFlowSetup.exe" class="btn-primary" id="heroDownloadBtn">Download for Windows</a>
+                    <a href="#demo" class="btn-secondary">Watch Demo</a>
                 </div>
-
-                <div class="preview-panel glass">
-                    <div class="preview-frame">
-                        <img src="Home.jpeg" alt="Finance Flow app home screen">
-                    </div>
-                    <div class="float-card float-top">
-                        <strong>Business ready</strong>
-                        <span>Billing and invoicing software</span>
-                    </div>
-                    <div class="float-card float-bottom">
-                        <strong>Responsive layout</strong>
-                        <span>Looks clean on every device</span>
-                    </div>
+                <div class="hero-features">
+                    <span>✓ No Internet Required</span>
+                    <span>✓ Easy Setup</span>
+                    <span>✓ Lifetime Access</span>
                 </div>
+            </div>
+            <div class="hero-image">
+                <img src="Screenshot 2026-07-10 202032.png" alt="Finance Flow Dashboard" class="floating-img">
             </div>
         </section>
 
-        <section class="section" id="about">
-            <div class="container">
-                <div class="section-head">
-                    <span class="eyebrow">Why Finance Flow</span>
-                    <h2 class="section-title">Built for modern businesses that need speed and control.</h2>
-                    <p class="section-copy">The layout is designed to present the product clearly, highlight the real
-                        screenshots you shared, and stay readable on desktops, tablets, and phones.</p>
-                </div>
-
-                <div class="feature-grid">
-                    <article class="feature-card glass">
-                        <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
-                        <h3>Lightning fast workflow</h3>
-                        <p>Quick access to the important screens with a simple, focused layout that keeps users moving.
-                        </p>
-                    </article>
-
-                    <article class="feature-card glass">
-                        <div class="feature-icon"><i class="fa-solid fa-lock"></i></div>
-                        <h3>Secure local data</h3>
-                        <p>Present your desktop app as a dependable local solution for accounting, billing, and
-                            reporting.</p>
-                    </article>
-
-                    <article class="feature-card glass">
-                        <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
-                        <h3>Smart business reports</h3>
-                        <p>Show sales, purchase, stock, and invoice features in a way that feels polished instead of
-                            cluttered.</p>
-                    </article>
-                </div>
+        <section id="demo" class="video-section">
+            <div class="section-header">
+                <h2>See How It Works</h2>
+                <p>A quick overview of generating bills and managing stock.</p>
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Finance Flow Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </section>
 
-        <section class="section" id="features">
-            <div class="container">
-                <div class="section-head">
-                    <span class="eyebrow">Core Features</span>
-                    <h2 class="section-title">Everything the software needs, presented clearly.</h2>
+        <section id="capabilities" class="dark-features-section reveal">
+            <div class="dark-features-container">
+                <div class="dark-section-header">
+                    <h2>Everything the software needs,<br>presented clearly.</h2>
                 </div>
-
-                <div class="feature-grid">
-                    <article class="info-card glass">
-                        <h3><i class="fa-solid fa-building"></i> Company management</h3>
+                
+                <div class="dark-features-grid">
+                    <div class="dark-card">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M13 3l8 4v14M7 11h2M7 15h2M15 11h2M15 15h2"/></svg>
+                            Company management
+                        </h3>
                         <p>Create and manage companies, ledgers, and business records in one place.</p>
-                    </article>
-                    <article class="info-card glass">
-                        <h3><i class="fa-solid fa-boxes-stacked"></i> Inventory tracking</h3>
+                    </div>
+
+                    <div class="dark-card">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                            Inventory tracking
+                        </h3>
                         <p>Track product groups, quantity changes, purchases, and stock updates with ease.</p>
-                    </article>
-                    <article class="info-card glass">
-                        <h3><i class="fa-solid fa-receipt"></i> GST billing</h3>
+                    </div>
+
+                    <div class="dark-card">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                            GST billing
+                        </h3>
                         <p>Present invoice generation and GST-related screens with a modern, professional look.</p>
-                    </article>
-                    <article class="info-card glass">
-                        <h3><i class="fa-solid fa-indian-rupee-sign"></i> Sales and purchase</h3>
+                    </div>
+
+                    <div class="dark-card">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12M6 8h12M6 13h12M12 18h6"/><path d="M9 3v18"/></svg>
+                            Sales and purchase
+                        </h3>
                         <p>Show the flow from customer sales to purchase records without visual noise.</p>
-                    </article>
-                    <article class="info-card glass">
-                        <h3><i class="fa-solid fa-magnifying-glass-chart"></i> Analytics</h3>
+                    </div>
+
+                    <div class="dark-card">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                            Analytics
+                        </h3>
                         <p>Give the landing page a premium feel while still keeping it practical and informative.</p>
-                    </article>
-                    <article class="info-card glass">
-                        <h3><i class="fa-solid fa-cloud-arrow-up"></i> Backup support</h3>
+                    </div>
+
+                    <div class="dark-card">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            Backup support
+                        </h3>
                         <p>Communicate dependable data handling and restore options in a simple, trust-building way.</p>
-                    </article>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="section" id="gallery">
-            <div class="container">
-                <div class="section-head">
-                    <span class="eyebrow">Product Gallery</span>
-                    <h2 class="section-title">Your real screenshots, arranged like a polished showcase.</h2>
-                    <p class="section-copy">Click any image to preview it larger. The gallery uses the screenshots from
-                        your folder instead of placeholder stock images.</p>
+        <section id="features" class="showcase-section">
+            <div class="showcase-container">
+                <div class="showcase-header">
+                    <span class="showcase-badge">Interface Showcase</span>
+                    <h2>Inside Finance Flow</h2>
+                    <p>A powerful suite of tools designed with absolute clarity, ensuring you spend less time on software and more time on your business.</p>
                 </div>
-
-                <div class="gallery-grid" id="galleryGrid"></div>
-            </div>
-        </section>
-
-        <section class="section preview-section">
-            <div class="container">
-                <div class="section-head">
-                    <span class="eyebrow">Software Preview</span>
-                    <h2 class="section-title">A quick demo section keeps the page feeling complete.</h2>
-                    <p class="section-copy">Your bundled video can sit here as a clean product preview without breaking
-                        the layout on mobile.</p>
-                </div>
-
-                <div class="glass" style="padding: 18px; border-radius: 28px;">
-                    <video autoplay muted loop playsinline controls>
-                        <source src="Preview.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <div class="stats-grid">
-                    <article class="stat-card glass">
-                        <h3>50K+</h3>
-                        <p>Invoices generated</p>
-                    </article>
-                    <article class="stat-card glass">
-                        <h3>10K+</h3>
-                        <p>Businesses supported</p>
-                    </article>
-                    <article class="stat-card glass">
-                        <h3>99.9%</h3>
-                        <p>Accuracy focus</p>
-                    </article>
-                    <article class="stat-card glass">
-                        <h3>4.9★</h3>
-                        <p>User rating</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="download">
-            <div class="container">
-                <div class="download-card glass">
-                    <span class="eyebrow"><i class="fa-solid fa-download"></i> Download Finance Flow</span>
-                    <h2 class="section-title">Start managing your business today.</h2>
-                    <p class="section-copy">Use this section for the installer link, documentation, or the next step you
-                        want users to take.</p>
-
-                    <div class="download-actions">
-                        <a class="btn btn-primary" href="https://github.com/Milan0897/FinanceFlow/releases/download/Finance/mysetup.1.exe"><i class="fa-solid fa-download"></i> Download for
-                            Windows</a>
-                        <a class="btn btn-secondary" href="#features"><i class="fa-solid fa-circle-info"></i> Explore
-                            Features</a>
+                
+                <div class="showcase-grid">
+                    <div class="showcase-card reveal">
+                        <div class="showcase-img-wrapper">
+                            <img src="Screenshot 2026-07-10 202216.png" alt="Billing Interface">
+                        </div>
+                        <div class="showcase-content">
+                            <h3>Lightning Fast Billing</h3>
+                            <p>Create invoices instantly. Automatically calculate GST, apply discounts, and manage cash or due payments in one click.</p>
+                        </div>
                     </div>
 
-                    <div class="steps glass">
-                        <h3>Installation</h3>
-                        <ol>
-                            <li>Download <strong>setup.exe</strong>.</li>
-                            <li>Run the installer.</li>
-                            <li>Complete the setup wizard.</li>
-                            <li>Launch Finance Flow.</li>
-                            <li>Create your company and start billing.</li>
-                        </ol>
+                    <div class="showcase-card reveal">
+                        <div class="showcase-img-wrapper">
+                            <img src="Screenshot 2026-07-10 202113.png" alt="Product Management">
+                        </div>
+                        <div class="showcase-content">
+                            <h3>Inventory Control</h3>
+                            <p>Keep precise track of your stock. Add new products, define cost and selling prices, and categorize items easily.</p>
+                        </div>
                     </div>
+
+                    <div class="showcase-card reveal">
+                        <div class="showcase-img-wrapper">
+                            <img src="Screenshot 2026-07-10 202309.png" alt="Customer Dues">
+                        </div>
+                        <div class="showcase-content">
+                            <h3>Customer Due Management</h3>
+                            <p>Never lose track of pending payments. Search customers by mobile number to quickly settle outstanding balances.</p>
+                        </div>
+                    </div>
+
+                    <div class="showcase-card reveal">
+                        <div class="showcase-img-wrapper">
+                            <img src="Screenshot 2026-07-10 202057.png" alt="Company Setup">
+                        </div>
+                        <div class="showcase-content">
+                            <h3>Multiple Company Profiles</h3>
+                            <p>Setup customized profiles with specific GST details, regional settings, and customized currency options.</p>
+                        </div>
+                    </div>
+
+                    <div class="showcase-card reveal">
+                        <div class="showcase-img-wrapper">
+                            <img src="Screenshot 2026-07-10 202240.png" alt="Sales Records">
+                        </div>
+                        <div class="showcase-content">
+                            <h3>Comprehensive Reporting</h3>
+                            <p>Access detailed purchase and sales records. Export your data directly to Excel for advanced accounting.</p>
+                        </div>
+                    </div>
+
+                    <div class="showcase-card reveal">
+                        <div class="showcase-img-wrapper">
+                            <img src="Screenshot 2026-07-10 202253.png" alt="Stock Update">
+                        </div>
+                        <div class="showcase-content">
+                            <h3>Dynamic Pricing Updates</h3>
+                            <p>Easily adjust quantities, update purchase prices, or alter GST rates on the fly to adapt to market changes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="modern-cta-section">
+            <div class="cta-container">
+                <div class="cta-badge reveal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download Finance Flow
+                </div>
+                
+                <h2 class="reveal">Start managing your business today.</h2>
+                <p class="cta-subtitle reveal">Use this section for the installer link, documentation, or the next step you want users to take.</p>
+                
+                <div class="cta-buttons reveal">
+                    <a href="FinanceFlowSetup.exe" class="btn-gradient">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download for Windows
+                    </a>
+                    <a href="#capabilities" class="btn-outline-dark">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                        Explore Features
+                    </a>
+                </div>
+
+                <div class="installation-card reveal">
+                    <h3>Installation</h3>
+                    <ol>
+                        <li>Download <strong>setup.exe</strong>.</li>
+                        <li>Run the installer.</li>
+                        <li>Complete the setup wizard.</li>
+                        <li>Launch Finance Flow.</li>
+                        <li>Create your company and start billing.</li>
+                    </ol>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container footer-grid">
-            <div>
-                <div class="footer-brand">Finance Flow</div>
-                <p>Modern billing and invoicing software presented with a cleaner, more responsive landing page.</p>
-            </div>
-            <div>
-                <h4>Product</h4>
-                <p><a href="#features">Features</a></p>
-                <p><a href="#gallery">Gallery</a></p>
-                <p><a href="#download">Download</a></p>
-            </div>
-            <div>
-                
-            </div>
-        </div>
-        <div class="container" style="padding-top: 26px; color: var(--muted); text-align: center;">
-            © 2026 Finance Flow. All Rights Reserved.
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">FINANCE <span>FLOW</span></div>
+            <p>&copy; 2026 Finance Flow Software. All rights reserved.</p>
         </div>
     </footer>
 
-    <div class="modal" id="previewModal" aria-hidden="true">
-        <button class="modal-close" id="modalClose" type="button" aria-label="Close preview">&times;</button>
-        <img id="previewImage" alt="Preview image">
-    </div>
-
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        const menuIcon = menuToggle.querySelector('i');
-        const galleryGrid = document.getElementById('galleryGrid');
-        const previewModal = document.getElementById('previewModal');
-        const previewImage = document.getElementById('previewImage');
-        const modalClose = document.getElementById('modalClose');
-
-        const galleryItems = [
-            { file: 'Home.jpeg', label: 'Brand / Launch' },
-            { file: 'WhatsApp Image 2026-07-10 at 6.41.58 PM.jpeg', label: 'Login Screen' },
-            { file: 'WhatsApp Image 2026-07-10 at 6.41.56 PM.jpeg', label: 'Print Pannel' },
-            { file: 'WhatsApp Image 2026-07-10 at 6.41.59 PM (1).jpeg', label: 'Update Pannel' }
-            
-        ];
-
-        galleryGrid.innerHTML = galleryItems.map((item) => {
-            const imageSrc = encodeURI(item.file);
-            return `
-      <article class="gallery-item glass">
-        <img src="${imageSrc}" alt="${item.label}" data-full="${item.file}">
-        <div class="gallery-overlay"><strong>${item.label}</strong></div>
-      </article>
-    `;
-        }).join('');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('mobile-open');
-            const isOpen = navLinks.classList.contains('mobile-open');
-            menuIcon.classList.toggle('fa-bars', !isOpen);
-            menuIcon.classList.toggle('fa-xmark', isOpen);
-        });
-
-        navLinks.querySelectorAll('a').forEach((link) => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('mobile-open');
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
-            });
-        });
-
-        document.querySelectorAll('.gallery-item img').forEach((image) => {
-            image.addEventListener('click', () => {
-                previewImage.src = encodeURI(image.dataset.full || image.src);
-                previewModal.classList.add('open');
-                previewModal.setAttribute('aria-hidden', 'false');
-            });
-        });
-
-        function closePreview() {
-            previewModal.classList.remove('open');
-            previewModal.setAttribute('aria-hidden', 'true');
-            previewImage.src = '';
-        }
-
-        modalClose.addEventListener('click', closePreview);
-        previewModal.addEventListener('click', (event) => {
-            if (event.target === previewModal) closePreview();
-        });
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') closePreview();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
-
 </html>
