@@ -33,12 +33,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // --- Scroll Reveal Animations ---
 const reveals = document.querySelectorAll('.reveal');
 
-reveals.forEach(element => {
-    element.style.opacity = "0";
-    element.style.transform = "translateY(30px)";
-    element.style.transition = "all 0.6s ease-out";
-});
-
 const revealOnScroll = () => {
     const windowHeight = window.innerHeight;
     const elementVisible = 100;
