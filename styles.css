@@ -88,7 +88,6 @@ header.scrolled {
     color: var(--accent-color);
 }
 
-/* Aligns the links and the download button side-by-side */
 .nav-menu {
     display: flex;
     align-items: center;
@@ -617,6 +616,13 @@ footer {
 
 .footer-logo span {
     color: var(--accent-color);
+}
+
+/* --- JS Classes (Reveal Animations) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
 }
 
 /* --- Responsive Design --- */
